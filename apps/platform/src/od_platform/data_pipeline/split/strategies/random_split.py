@@ -11,8 +11,11 @@ from od_platform.data_pipeline.split.strategy_registry import SplitOptions, regi
 @register_strategy(SplitStrategy.RANDOM, requires_labels=False)
 def random_split(pairs:PairList, options:SplitOptions) -> SplitManifest:
     test_rate = validate_rates(options.train_rate, options.val_rate)
-    manifest = SplitManifest(train_rate=options.train_rate, val_rate= options.val_rate, test_rate=test_rate,
-                             random_state = options.random_state, strategy=SplitStrategy.RANDOM)
+    manifest = SplitManifest(train_rate=options.train_rate,
+                             val_rate=options.val_rate,
+                             test_rate=test_rate,
+                             random_state = options.random_state,
+                             strategy=SplitStrategy.RANDOM)
 
     n = len(pairs)
     if n == 0:

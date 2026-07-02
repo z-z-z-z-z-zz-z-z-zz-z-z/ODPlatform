@@ -4,6 +4,7 @@
 from __future__ import annotations
 from typing import Tuple
 
+
 # —— 标注格式名(阶段 2:@register 要用,且会在多个 converter/CLI/测试复用)——
 class AnnotationFormat:
     PASCAL_VOC = "pascal_voc"
@@ -20,7 +21,6 @@ class Task:
     @classmethod
     def all(cls) -> Tuple[str, ...]:
         return cls.DETECT, cls.SEGMENT
-
 
 DEFAULT_RANDOM_STATE = 1210
 
@@ -39,11 +39,18 @@ class SplitStrategy:
     def all(cls) -> Tuple[str, ...]:
         return cls.RANDOM, cls.STRATIFIED, cls.STRATIFIED_MULTILABEL
 
-# --默认值(阶段4)------------------
-DEFAULT_SPLIT_STRATEGY = SplitStrategy.RANDOM  # 不指定 --split-strategy 时的默认
+# —— 默认值(阶段 4)————————————————————————————————————————————————
+DEFAULT_SPLIT_STRATEGY = SplitStrategy.RANDOM   # 不指定 --split-strategy 时的默认
 
-# -- 类别平衡报告的判断阈值(阶段5)
-CLASS_MIN_IMAGES_HARD = 2
-CLASS_MIN_BOXES_WARN = 20
-CLASS_MIN_BOX_SHARE = 0.01
+# —— 类别平衡报告的判级阈值(阶段 5)——————————————————————————————
+CLASS_MIN_IMAGES_HARD = 2     # 某类图数低于此,怎么分都进不全 train/val/test
+CLASS_MIN_BOXES_WARN = 20     # 框数低于此,样本太少大概率学不好
+CLASS_MIN_BOX_SHARE = 0.01    # 框占比低于 1%,相对其它类严重偏少
 
+# —— 图像-标注覆盖率阈值(阶段 6,fail-fast)——————————————————————
+COVERAGE_HARD_THRESHOLD = 0.5   # 低于此:数据明显残缺,直接终止(别让训练白干)
+COVERAGE_SOFT_THRESHOLD = 0.9   # 低于此:仅警告,允许继续
+
+# —— 认识哪些图像扩展名(阶段 7,配对图与标注时用)————————————————
+# 只认 .jpg 会把 png/jpeg 的数据静默丢光,所以这里列全;新增格式往这里加即可。
+IMAGE_EXTENSIONS: Tuple[str, ...] = (".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp")

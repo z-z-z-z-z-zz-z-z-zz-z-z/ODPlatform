@@ -9,6 +9,7 @@ from typing import List,Dict,Tuple
 Pair = Tuple[Path, Path]
 PairList = List[Pair]
 
+@dataclass
 class SplitManifest:
     # 三组样本
     train: PairList = field(default_factory=list)

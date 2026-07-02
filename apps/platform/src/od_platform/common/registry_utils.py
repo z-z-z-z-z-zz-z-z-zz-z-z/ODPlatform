@@ -11,4 +11,4 @@ def import_submodules(package: ModuleType) -> None :
 
     for m in pkgutil.iter_modules(package.__path__):
         if not m.name.startswith("_"):
-            importlib.import_module(f"{coverters.__name__}.{m.name}")
+            importlib.import_module(f"{package.__name__}.{m.name}")

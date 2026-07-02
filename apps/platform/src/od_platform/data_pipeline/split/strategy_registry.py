@@ -18,7 +18,7 @@ class SplitOptions:
     train_rate: float = 0.8
     val_rate: float = 0.1
     random_state: int = DEFAULT_RANDOM_STATE
-    label_per_image: Optional[Dict[str, List[str]]] = field(default=None)
+    labels_per_image: Optional[Dict[str, List[str]]] = field(default=None)
     group_per_image: Optional[Dict[str, str]] = field(default=None)  # 预留给按组划分的
 
 
