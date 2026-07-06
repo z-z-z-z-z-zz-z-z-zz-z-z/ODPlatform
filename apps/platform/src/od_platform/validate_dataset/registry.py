@@ -39,6 +39,7 @@ class CheckResult:
 class CheckContext:
     """check函数的入参： 所有check函数的前面都在这"""
     yaml_path: Path
+    snapshot: "DatasetSnapShot"
 
 
 @dataclass(frozen=True)
