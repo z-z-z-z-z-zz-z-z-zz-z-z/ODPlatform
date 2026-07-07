@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  :generator.py.py
+# @Time      :2026/7/3 14:50:31
+# @Author    :雨霓同学
+# @Project   :ODPlatform
+# @Function  :
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  : generator.py
+# @Author    : 雨霓同学 (ODPlatform team)
+# @Project   : ODPlatform
 # @Function  : runtime_config 子系统——反射式 YAML 模板生成器
 """配置生成器: 从 Pydantic 字段反射出自解释 YAML 模板.
 

@@ -55,7 +55,19 @@ COVERAGE_SOFT_THRESHOLD = 0.9   # 低于此:仅警告,允许继续
 # 只认 .jpg 会把 png/jpeg 的数据静默丢光,所以这里列全;新增格式往这里加即可。
 IMAGE_EXTENSIONS: Tuple[str, ...] = (".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp")
 
-
 # 标签对缺失警告的阈值
 PAIR_MISSING_ERROR_RATIO: float = 0.5  # 大于50%，直接error
 PAIR_MISSING_WARN_RATIO: float = 0.05   # 5-50%，仅警告, 0-5% 提示一下， 0% PASS
+
+# 孤儿标签阈值 (orphan_labels check — 标签无对应图像)
+# 多了不影响训练, 所以分级比 pair_existence 轻一个档位
+LABEL_ORPHAN_WARN_RATIO: float = 0.10   # ≥10% 标签无对应图像 → WARNING (成片残留=同步脚本有bug)
+                                         # <10% → INFO; 0 → PASS
+
+# 空标签阈值 (empty_labels check — 标签文件存在但无标注内容)
+EMPTY_LABEL_WARN_RATIO: float = 0.20    # ≥20% 图像标签为空 → WARNING (可能标注流程异常)
+                                         # <20% → INFO; 0 → PASS
+
+
+
+

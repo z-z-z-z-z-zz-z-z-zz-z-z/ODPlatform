@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @FileName  :result.py
-# @Time      :2026/5/26 10:29:33
+# @Time      :2026/7/6 09:29:56
 # @Author    :雨霓同学
 # @Project   :ODPlatform
-# @Function  : 训练/验证结果 dataclass + 日志输出函数(数据/日志分离)
+# @Function  :训练 验证 指标载体 + 指标日志输出（数据 、日志是分离的）
 """训练结果指标 dataclass + 日志输出函数.
 
 设计:
@@ -68,11 +68,11 @@ class TrainMetrics:
     """训练/验证后 ultralytics results 的结构化快照.
 
     设计点:
-      - frozen=True: 不可变, 给 audit_log 安全用
-      - field 类型用 PEP 585 (dict / list 而不是 Dict / List)
-      - speed_ms / overall / class_map_50_95 用 dict 而不是固定字段 — ultralytics
+        - frozen=True: 不可变, 给 audit_log 安全用
+        - field 类型用 PEP 585 (dict / list 而不是 Dict / List)
+        - speed_ms / overall / class_map_50_95 用 dict 而不是固定字段 — ultralytics
         的 results_dict 内容会随版本变, 字典更兼容
-      - to_dict() 给 audit 用; log_train_metrics 给终端/文件 log 用
+        - to_dict() 给 audit 用; log_train_metrics 给终端/文件 log 用
     """
     task:             str
     save_dir:         Path

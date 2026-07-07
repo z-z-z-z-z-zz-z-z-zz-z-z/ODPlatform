@@ -64,6 +64,6 @@ def log_override_chains(
             log.info(f"{pad_to_width(field_name, key_width)}: {value}")
             continue
         chain = list(reversed(meta.chain()))
-        chain_str = "<-".join(f"{m.value}({m.soure_label})" for m in chain)
+        chain_str = "<-".join(f"{m.value}({m.source_label})" for m in chain)
         log.info(f"{pad_to_width(field_name,key_width)}: {chain_str}")
 
