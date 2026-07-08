@@ -13,8 +13,8 @@ class SourceType(str, Enum):
     IMAGE_FOLDER = "image-folder"
 
 
-IMAGE_EXTENSION: frozenset[str] = frozenset({".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".webq"})
-VIDEO_EXTENSION: frozenset[str] = frozenset({".mp4", ".avi", ".mkv", ".mov", ".flv", ".wmv"})
+IMAGE_EXTENSIONS: frozenset[str] = frozenset({".png", ".jpg", ".jpeg", ".bmp", ".tiff", ".webq"})
+VIDEO_EXTENSIONS: frozenset[str] = frozenset({".mp4", ".avi", ".mkv", ".mov", ".flv", ".wmv"})
 
 
 @dataclass(frozen=True)
@@ -36,7 +36,7 @@ class FrameInfo:
     # 文件名
     filename: Optional[str] = None
     # 分辨率
-    @property 1个用法 新*
+    @property
     def resolution(self) -> tuple[int, int]:
         return self.width, self.height
 
@@ -55,5 +55,5 @@ class Frame:
         return self.info.width
 
     @property
-    def height(self)-> int:
+    def height(self) -> int:
         return self.info.height

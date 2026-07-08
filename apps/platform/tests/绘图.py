@@ -4,7 +4,7 @@ import numpy as np
 import matplotx
 
 # 读取数据
-df = pd.read_csv('results.csv')
+df = pd.read_csv('../src/od_platform/tests/results.csv')
 
 # 创建画布，设置合适的布局
 fig, axes = plt.subplots(3, 2, figsize=(16, 18))
